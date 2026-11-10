@@ -6,7 +6,6 @@
 
 <p align="center"><strong>Leggi. Ascolta. Annota. Decidi.</strong></p>
 <p align="center">Una dashboard locale per supervisionare e migliorare il testo scritto con l’AI.</p>
-<p align="center">Un progetto del portfolio di sviluppo AI di <a href="https://github.com/Simus100">Simone Macelloni</a>.</p>
 
 <p align="center">
   <a href="#avvio-rapido">Avvio rapido</a> ·
