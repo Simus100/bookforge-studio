@@ -1,0 +1,17 @@
+.runtime/
+.studio/
+dati/
+__pycache__/
+*.pyc
+.venv/
+venv/
+.env
+.env.*
+*.log
+*.sqlite3
+*.sqlite3-*
+*.wav
+.pytest_cache/
+.DS_Store
+Thumbs.db
+/Anteprima*.png

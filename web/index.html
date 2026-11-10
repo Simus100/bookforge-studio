@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BookForge Studio — Leggi, ascolta, rivedi</title>
+  <script src="/app.js"></script>
+  <link rel="icon" href="/favicon.svg"><link rel="stylesheet" href="/styles.css"><link rel="stylesheet" href="/polish.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="BookForge Studio, pagina iniziale"><span class="brand-mark">b<span>f</span></span><span>BookForge <b>Studio</b></span></a>
+    <div class="project-label"><span class="local-dot"></span><span id="project-title">Il tuo libro</span><span class="muted tiny">/ revisione</span></div>
+    <div class="top-actions"><span class="local-label">Sul tuo computer</span><select id="theme-select" class="theme-select" aria-label="Tema dell’interfaccia" title="Scegli modalità chiara o scura"><option value="light">☀ Chiaro</option><option value="dark">☾ Scuro</option></select><button class="button ghost" id="backup-btn" title="Salva un backup completo di testo, richieste e proposte">Esporta progetto</button><button class="icon-button" id="settings-btn" title="Titolo e regole editoriali" aria-label="Impostazioni del libro">⚙</button></div>
+  </header>
+
+  <div class="workspace">
+    <aside class="library" aria-label="Navigazione del libro">
+      <div class="library-intro"><span class="eyebrow">IL TUO MANOSCRITTO</span><h1>Una pagina<br>alla volta.</h1><p>Leggi con attenzione.<br>Lascia spazio alle idee.</p></div>
+      <div class="section-heading"><span>Capitoli</span><button class="small-icon" id="add-chapter" title="Aggiungi un capitolo" aria-label="Aggiungi un capitolo">+</button></div>
+      <nav id="chapter-list" class="chapter-list" aria-label="Capitoli"></nav>
+      <button class="button library-import" id="import-chapter">↥ <span>Importa testo</span></button>
+      <div class="library-bottom"><button class="quiet-link" id="rules-btn">▤ Carta del libro</button><button class="quiet-link" id="restore-btn">↶ Apri un progetto</button><div class="privacy-note"><span class="local-dot"></span>Testo e voci restano qui.<br><span>Condividi solo ciò che esporti.</span></div></div>
+    </aside>
+
+    <main class="reading-area" id="reading-area">
+      <div class="reading-toolbar"><div><span class="eyebrow" id="chapter-number">CAPITOLO 01</span><span id="demo-label" class="demo-label">ESEMPIO</span></div><div class="reading-tools"><button class="tool" id="font-btn" title="Dimensione del testo">Aa</button><button class="tool" id="focus-btn" aria-pressed="false" title="Nascondi i pannelli laterali">Lettura</button><button class="tool" id="edit-btn">✎ Modifica</button></div></div>
+      <div class="scroll-page" id="scroll-page"><article class="manuscript" id="manuscript"><div class="chapter-heading"><span class="chapter-ornament">—</span><h2 id="chapter-title"></h2><p id="chapter-meta"></p></div><div id="prose" class="prose" tabindex="0" aria-label="Testo del capitolo. Seleziona un brano per annotarlo."></div><div class="end-mark" aria-hidden="true">◇</div></article></div>
+      <div class="reading-bottom"><span id="word-count"></span><span id="save-state"><span class="local-dot"></span> Salvato sul computer</span><button class="quiet-link" id="undo-btn">↶ Annulla ultima operazione</button></div>
+    </main>
+
+    <aside class="review-panel" aria-label="Annotazioni e proposte">
+      <div class="review-heading"><span class="eyebrow">IL TUO SGUARDO EDITORIALE</span><h2>Margini <span id="request-count">0</span></h2><p>Un pensiero adesso.<br>Una pagina migliore, dopo.</p></div>
+      <div class="review-tabs" role="group" aria-label="Filtra annotazioni"><button data-filter="open" class="active">Aperte <span id="open-count">0</span></button><button data-filter="proposed">Proposte <span id="proposal-count">0</span></button><button data-filter="closed">Chiuse</button></div>
+      <div class="review-content" id="review-content"></div>
+      <div class="review-exchange"><div class="exchange-label"><span class="local-dot"></span>Revisione asincrona</div><button id="export-btn" class="button primary full">Esporta richieste <span id="export-count">0</span> <span>↗</span></button><button id="import-response" class="button secondary full">↙ Importa proposte dell’AI</button><button id="last-batch" class="quiet-link full hidden">Riscarica l’ultimo pacchetto</button></div>
+    </aside>
+  </div>
+
+  <footer class="player" aria-label="Lettore vocale locale">
+    <button class="voice-picker" id="voice-btn"><span class="voice-avatar">♫</span><span><strong id="voice-name">Paola</strong><small id="voice-description">Voce locale · italiano</small></span><span class="chevron">⌃</span></button>
+    <div class="player-center"><div class="transport"><button class="icon-button" id="previous-btn" title="Frase precedente" aria-label="Frase precedente">⏮</button><button class="play-button" id="play-btn" aria-label="Avvia lettura">▶</button><button class="icon-button" id="next-btn" title="Frase successiva" aria-label="Frase successiva">⏭</button><button class="speed-button" id="speed-btn" title="Velocità di lettura">1×</button></div><div class="player-progress"><span id="play-position">Pronto all’ascolto</span><progress id="audio-progress" value="0" max="1" aria-label="Avanzamento del capitolo"></progress><span id="sentence-count">—</span></div></div>
+    <div class="player-right"><label class="follow-label"><input type="checkbox" id="follow-check" checked> Segui il testo</label><button id="note-playing" class="button ghost" title="Annota la frase corrente (N durante l’ascolto)">✎ Annota qui</button></div>
+  </footer>
+
+  <div class="selection-menu hidden" id="selection-menu"><span id="selection-length"></span><button id="annotate-btn">✎ Annota il brano</button><button id="listen-selection" aria-label="Ascolta da qui" title="Ascolta da qui">▶</button></div>
+  <div class="toast hidden" id="toast" role="status" aria-live="polite"></div>
+
+  <dialog id="annotation-dialog" class="dialog annotation-dialog"><form id="annotation-form"><div class="dialog-top"><span class="eyebrow">UNA NOTA AL MARGINE</span><button type="button" class="icon-button close-dialog" aria-label="Chiudi">×</button></div><h2>Cosa vorresti migliorare?</h2><blockquote id="selected-quote"></blockquote><label for="annotation-comment">La tua indicazione</label><textarea id="annotation-comment" required rows="4" placeholder="Per esempio: qui vorrei più tensione, senza spiegare cosa prova il personaggio."></textarea><div class="annotation-options"><label for="annotation-category">Aspetto</label><select id="annotation-category"><option value="generale">Revisione libera</option><option value="voce">Voce e stile</option><option value="ritmo">Ritmo</option><option value="dialoghi">Dialoghi</option><option value="continuita">Continuità</option><option value="chiarezza">Chiarezza</option><option value="refuso">Refuso</option></select></div><p class="helper">La richiesta entra nella coda. Il testo cambia solo quando approvi una proposta.</p><div class="dialog-actions"><button type="button" class="button ghost close-dialog">Annulla</button><button type="submit" class="button primary">Aggiungi richiesta ↗</button></div></form></dialog>
+
+  <dialog id="edit-dialog" class="dialog wide-dialog"><form id="edit-form"><div class="dialog-top"><span class="eyebrow">MODIFICA IL CAPITOLO</span><button type="button" class="icon-button close-dialog" aria-label="Chiudi">×</button></div><input id="edit-title" class="title-input" aria-label="Titolo del capitolo" required maxlength="300"><textarea id="edit-text" class="chapter-editor" aria-label="Testo del capitolo" spellcheck="true"></textarea><p class="helper">Le annotazioni sui brani rimasti identici vengono mantenute. Quelle sui brani modificati vengono segnalate.</p><div class="dialog-actions"><button type="button" class="button ghost close-dialog">Annulla</button><button class="button primary" type="submit">Salva capitolo</button></div></form></dialog>
+
+  <dialog id="settings-dialog" class="dialog"><form id="settings-form"><div class="dialog-top"><span class="eyebrow">CARTA DEL LIBRO</span><button type="button" class="icon-button close-dialog" aria-label="Chiudi">×</button></div><h2>La direzione resta tua.</h2><label for="book-title">Titolo del progetto</label><input id="book-title" required maxlength="300"><label for="book-brief">Voce, canone e istruzioni per chi revisiona</label><textarea id="book-brief" rows="9" placeholder="Descrivi la voce da preservare, il punto di vista, i fatti che non devono cambiare. Puoi inserire qui le regole pertinenti di BookForge."></textarea><p class="helper">Queste regole accompagnano ogni pacchetto esportato. La skill BookForge completa non viene caricata automaticamente.</p><div class="dialog-actions"><button class="button primary" type="submit">Salva le regole</button></div></form></dialog>
+
+  <dialog id="voices-dialog" class="dialog"><div class="dialog-top"><span class="eyebrow">ASCOLTO SUL TUO COMPUTER</span><button class="icon-button close-dialog" aria-label="Chiudi">×</button></div><h2>Trova la tua voce.</h2><p class="dialog-description">Scarica una volta. Ascolta anche senza Internet.<br>La sintesi vocale avviene sul tuo PC.</p><div class="auto-voice"><label><input type="checkbox" id="auto-voice" checked> Adatta la voce alle prestazioni del PC</label><p>Sceglie fra le voci scaricate, usando la velocità misurata durante l’ascolto. Per provare Studio, selezionalo una volta.</p></div><div id="voice-list"></div><div class="voice-footnote"><strong>Come scegliere</strong><p>Paola è il punto di partenza consigliato su CPU. Riccardo usa un modello più piccolo. Studio offre una voce narrativa generativa su GPU NVIDIA; velocità e pronuncia italiana vanno provate sulla tua macchina.</p><p>Le voci sono sintetiche. Studio può richiedere diversi GB di spazio e di memoria GPU. L’app non passa al cloud.</p><p id="benchmark-label"></p></div></dialog>
+
+  <dialog id="response-dialog" class="dialog"><form id="response-form"><div class="dialog-top"><span class="eyebrow">IL LAVORO TORNA AL LIBRO</span><button type="button" class="icon-button close-dialog" aria-label="Chiudi">×</button></div><h2>Importa le proposte.</h2><p class="dialog-description">Dai il pacchetto esportato all’AI che preferisci. Chiedile di restituire il JSON indicato nel pacchetto, poi aprilo qui.</p><button type="button" class="button secondary full" id="choose-response-file">Apri file di risposta .json</button><label for="response-text">Oppure incolla la risposta JSON</label><textarea id="response-text" rows="8" class="code-input" placeholder='{"schema":"bookforge.responses.v1", ...}'></textarea><p class="helper">L’importazione aggiunge proposte da valutare. Il manoscritto resta nella versione salvata.</p><div class="dialog-actions"><button class="button primary" type="submit">Verifica e importa</button></div></form></dialog>
+
+  <dialog id="export-dialog" class="dialog"><div class="dialog-top"><span class="eyebrow">PRONTO PER LA REVISIONE</span><button class="icon-button close-dialog" aria-label="Chiudi">×</button></div><h2>Le tue indicazioni, in viaggio.</h2><p class="dialog-description">Il pacchetto contiene richieste, brani selezionati, regole editoriali e i capitoli interessati per dare contesto all’AI.</p><ol class="steps"><li>Allega il file JSON alla conversazione con l’AI.</li><li>Chiedi di seguire le istruzioni e il formato di risposta inclusi.</li><li>Quando hai il risultato, usa <strong>Importa proposte</strong>.</li></ol><p class="helper">Puoi continuare a leggere e annotare nel frattempo. I brani che cambi saranno controllati prima di applicare le proposte.</p><div class="dialog-actions"><button class="button secondary" id="copy-instructions">Copia il messaggio</button><button class="button primary close-dialog">Continua a leggere</button></div></dialog>
+
+  <dialog id="confirm-dialog" class="dialog"><div class="dialog-top"><span class="eyebrow">PROGETTO LOCALE</span><button class="icon-button close-dialog" aria-label="Chiudi">×</button></div><h2 id="confirm-title"></h2><p id="confirm-message" class="dialog-description"></p><div class="dialog-actions"><button class="button ghost close-dialog">Annulla</button><button class="button primary" id="confirm-action">Continua</button></div></dialog>
+
+  <input type="file" id="chapter-file" accept=".txt,.md,text/plain,text/markdown" multiple hidden>
+  <input type="file" id="response-file" accept=".json,application/json" hidden>
+  <input type="file" id="project-file" accept=".json,application/json" hidden>
+</body></html>

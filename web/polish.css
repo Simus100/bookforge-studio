@@ -1,0 +1,69 @@
+.auto-voice{background:#f2f5ec;border:1px solid #e0e6d7;border-radius:7px;padding:12px 15px;margin-bottom:18px}
+.auto-voice label{display:flex;align-items:center;gap:8px;color:#4e6845;margin:0;font-size:12px}
+.auto-voice input{accent-color:var(--green)}
+.auto-voice p{font-size:10px;color:#7c8b6e;line-height:1.8;margin:7px 0 0}
+.eyebrow{font-size:10px}
+.review-heading p{font-size:12px;color:#79846d}
+.review-tabs button{font-size:11px}
+.card-comment{font-size:12px}
+.proposal-text{font-size:14px}
+.quote-button{font-size:14px}
+.review-exchange .button{font-size:12px}
+.empty-state p{font-size:12px;color:#7d896f}
+.empty-hint{font-size:11px;color:#748365}
+.local-label{color:#728065}
+@media(max-width:950px){.prose{font-size:var(--reading-size)}}
+
+:root{color-scheme:light}
+.theme-select{background:transparent;border:1px solid #dce1d5;color:var(--ink);border-radius:6px;padding:8px 9px;font-size:12px;cursor:pointer;min-height:36px}
+:root[data-theme="dark"]{color-scheme:dark;--ink:#dfe7db;--muted:#a8b3a0;--green:#a3c198;--green-dark:#b5d0ab;--line:#354239;--paper:#1d2520;--cream:#151d19;--light:#2b392e;--gold:#d4b47e;--highlight:#5c512b}
+[data-theme="dark"] .topbar,[data-theme="dark"] .player{background:#18221c;border-color:#354239}
+[data-theme="dark"] .library{background:#19251e}
+[data-theme="dark"] .review-panel{background:#1c2820}
+[data-theme="dark"] .review-exchange{background:#18241c}
+[data-theme="dark"] .chapter-item:hover,[data-theme="dark"] .chapter-item.active{background:#2b3b2b;border-color:#41543b}
+[data-theme="dark"] .button.primary,[data-theme="dark"] .play-button{color:#142116}
+[data-theme="dark"] .button.secondary{background:#26342a;border-color:#4a5c42;color:#e1ebda}
+[data-theme="dark"] .button.secondary:hover,[data-theme="dark"] .button.ghost:hover,[data-theme="dark"] .icon-button:hover,[data-theme="dark"] .small-icon:hover{background:#35472f}
+[data-theme="dark"] .button.ghost,[data-theme="dark"] .theme-select,[data-theme="dark"] .library-import,[data-theme="dark"] .speed-button{border-color:#46573e}
+[data-theme="dark"] .reading-toolbar,[data-theme="dark"] .reading-bottom,[data-theme="dark"] .card-footer{border-color:#344134}
+[data-theme="dark"] .prose{color:#d6ddce}
+[data-theme="dark"] .prose::selection,[data-theme="dark"] .prose *::selection{background:#756336;color:#fff3ce}
+[data-theme="dark"] .sentence.annotated{background:linear-gradient(transparent 85%,#3a4b31 85%);border-bottom-color:#8b9e6c}
+[data-theme="dark"] .sentence.speaking,[data-theme="dark"] .sentence.annotated.speaking{background:#554b28;box-shadow:0 0 0 3px #554b28;color:#fff0be}
+[data-theme="dark"] .sentence.request-focus{background:#3a4b31;box-shadow:0 0 0 3px #3a4b31}
+[data-theme="dark"] .review-card{background:#243028;border-color:#42533c;box-shadow:0 2px 3px #0002}
+[data-theme="dark"] .status{background:#35452f;color:#d0dfbd}
+[data-theme="dark"] .status.proposed{background:#365039;color:#d9ebce}
+[data-theme="dark"] .status.conflict,[data-theme="dark"] .conflict-message{background:#493b25;color:#f0d09e}
+[data-theme="dark"] .card-comment{color:#d4dfc9}
+[data-theme="dark"] .quote-button{color:#c1ceb3;border-left-color:#829466}
+[data-theme="dark"] .quote-button:hover{color:#e5eedb}
+[data-theme="dark"] .proposal-text del{background:#563b32;color:#f2beaa}
+[data-theme="dark"] .proposal-text ins{background:#374e30;color:#deedcb}
+[data-theme="dark"] .selection-menu{background:#b5d0ab;color:#162719}
+[data-theme="dark"] .selection-menu button,[data-theme="dark"] .selection-menu>span{color:#162719}
+[data-theme="dark"] .selection-menu>span{border-right-color:#48643b66}
+[data-theme="dark"] .selection-menu button:hover{background:#18371e18}
+[data-theme="dark"] .dialog{background:#202c23;border-color:#4a5b40;color:var(--ink)}
+[data-theme="dark"] .dialog::backdrop{background:#0009}
+[data-theme="dark"] .dialog input:not([type=checkbox]),[data-theme="dark"] .dialog textarea,[data-theme="dark"] .dialog select{background:#18231b;border-color:#526449;color:#e0e9d6}
+[data-theme="dark"] .dialog blockquote{color:#c1cfb2;border-left-color:#829466}
+[data-theme="dark"] .voice-card{border-color:#4a5b40}
+[data-theme="dark"] .voice-card.selected{background:#2c3f2b;border-color:#96b282}
+[data-theme="dark"] .auto-voice,[data-theme="dark"] .voice-footnote{background:#293a28;border-color:#4a5b40}
+[data-theme="dark"] .auto-voice label,[data-theme="dark"] .voice-footnote strong{color:#d7e7c8}
+[data-theme="dark"] .voice-avatar{background:#32452c;color:#bfd1a7}
+[data-theme="dark"] .toast{background:#c2d5b2;color:#1d2c1b}
+[data-theme="dark"] .toast.error{background:#744e38;color:#ffead5}
+[data-theme="dark"] .download-status.error{color:#efbda3}
+[data-theme="dark"] .demo-label{border-color:#79623d;color:#ddbf8f}
+[data-theme="dark"] :is(.eyebrow,.tool,.quiet-link,.local-label,.chapter-words,.chapter-index,.card-category,.chapter-heading p,.review-heading p,.review-tabs button,.review-tabs span,.proposal-reason,.proposal-label,.card-footer,.empty-state p,.empty-hint,.reading-bottom,.exchange-label,.player-progress,.voice-picker small,.follow-label,.voice-card p,.download-status,.auto-voice p,.voice-footnote,.dialog-description,.dialog .helper,.dialog label,.privacy-note,.privacy-note>span:last-child,.chevron,.speed-button,.steps,.section-heading,.library-intro p){color:#acb99e}
+[data-theme="dark"] .review-tabs button.active{color:#d3e9bf;border-bottom-color:#a3c198}
+[data-theme="dark"] .empty-hint,[data-theme="dark"] .profile-badge,[data-theme="dark"] .review-heading h2 span{border-color:#536447;color:#c0d0ad}
+[data-theme="dark"] .scroll-page{scrollbar-color:#576747 transparent}
+[data-theme="dark"] progress,[data-theme="dark"] progress::-webkit-progress-bar{background:#44523b}
+[data-theme="dark"] progress::-webkit-progress-value{background:#abc494}
+[data-theme="dark"] progress::-moz-progress-bar{background:#abc494}
+@media(max-width:760px){.theme-select{font-size:11px;padding:7px 5px}.topbar{gap:12px}}
+@media(max-width:540px){.topbar{gap:7px}.top-actions .button{padding:8px}.theme-select{max-width:90px}.brand{gap:7px;font-size:13px}}
